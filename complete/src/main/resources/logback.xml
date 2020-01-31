@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true" scanPeriod="30 seconds">
+
+	<appender name="SYSLOG" class="ch.qos.logback.classic.net.SyslogAppender">
+	    <syslogHost>127.0.0.1</syslogHost>
+	    <facility>LOCAL0</facility>
+	    <port>514</port>
+	    <throwableExcluded>true</throwableExcluded>
+		<suffixPattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</suffixPattern>
+	    <!--<suffixPattern>gs-rest-service %m thread:%t priority:%p category:%c exception:%exception</suffixPattern>-->
+
+	</appender>  
+
+	<logger name="hello" level="debug" additivity="false">
+	   <appender-ref ref="SYSLOG" />
+	</logger>
+
+	<root level="DEBUG">
+		<appender-ref ref="SYSLOG" />
+	</root>
+
+</configuration>
